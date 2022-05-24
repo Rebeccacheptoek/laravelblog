@@ -25,11 +25,11 @@ class ServicesController extends Controller
             'description' => $request->description,
             'user_id' => auth()->id(),
         ]);
-        return redirect()->back();
+        return redirect('services/manage');
     }
 
     public function addService(){
-        return view('admin.add');
+        return view('admin.services.add');
         //return redirect('/services')->with('service', 'Service Added');
     }
 
@@ -50,7 +50,7 @@ class ServicesController extends Controller
 //                     ')
 //            ->get();
 
-        return view('admin.services')->with($data);
+        return view('admin.services.services')->with($data);
     }
     public function show($id){
 
@@ -58,7 +58,7 @@ class ServicesController extends Controller
 
     public function edit($id){
         $service = Service::find($id);
-        return view('pages.edit')->with('service', $service);
+        return view('admin/services.edit')->with('service', $service);
     }
 
     public function update(Request $request, $id){
@@ -70,10 +70,11 @@ class ServicesController extends Controller
         $service = Service::find($id);
         $service->name = $request->name;
         $service->description = $request->description;
+        $service->status = $request->status;
         $service->user_id = auth()->id();
         $service->save();
 
-        return redirect('/services')->with('success', 'Updated');
+        return redirect('services/manage')->with('success', 'Updated');
     }
 
     public function destroy($id){

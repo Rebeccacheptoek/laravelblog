@@ -7,28 +7,28 @@
     <table class="table table-striped">
         <tr>
             <th> <font face="Arial">ID</font> </th>
-            <th> <font face="Arial">User Id</font> </th>
             <th> <font face="Arial">Name</font> </th>
             <th> <font face="Arial">Description</font> </th>
             <th> <font face="Arial">Status</font> </th>
+            <th> <font face="Arial">User Name</font> </th>
             <th> <font face="Arial">Action</font> </th>
         </tr>
 
         @foreach($services as $service)
             <tr>
-                <th> <font face="Arial">{{$service->id}}</font> </th>
-                <th> <font face="Arial"></font>
-                        <small>{{ $service->user->name }}</small>
-                </th>
-                <th> <font face="Arial">{{$service->name}}</font> </th>
-                <th> <font face="Arial">{{ $service->description }}</font> </th>
-                <th> <font face="Arial"></font>
+                <td> <font face="Arial">{{$service->id}}</font> </td>
+                <td> <font face="Arial">{{$service->name}}</font> </td>
+                <td> <font face="Arial">{{ $service->description }}</font> </td>
+                <td> <font face="Arial"></font>
                         @if($service->status == 1)
                             Active
                         @else
                             Inactive
                         @endif
-                </th>
+                </td>
+                <td> <font face="Arial"></font>
+                    <small>{{ $service->user->name }}</small>
+                </td>
                     <th><font face="Arial"></font>@auth
                         <a href="{{ url('services/edit/' . $service->id) }}" class="btn btn-primary">Edit</a>
                            <form action="{{ url('services/delete/' . $service->id) }}" method="POST">

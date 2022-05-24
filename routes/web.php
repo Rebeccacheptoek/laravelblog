@@ -54,7 +54,7 @@ Route::post('posts/delete/{post_id}', $posts_controller.'@destroy');
 
 Route::post('services/store', $service_controller.'@storeService');
 Route::get('add/', $service_controller.'@addService');
-Route::get('services/manage', $service_controller.'@manageServices');
+Route::get('services/manage', $service_controller.'@manageServices')->middleware('auth');
 Route::get('services/edit/{service_id}', $service_controller.'@edit');
 Route::post('services/update/{pages_id}', $service_controller.'@update');
 Route::post('services/delete/{pages_id}', $service_controller.'@destroy');
