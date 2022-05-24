@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{$title}}</h1>
-    <button type="button" class="btn btn-default position:absolute; top:0; right:0;"><a href="{{ url('/services') }}">Add Service</a></button>
+    <button type="button" class="btn btn-default position:absolute; top:0; right:0;"><a href="{{ url('add/') }}">Add Service</a></button>
     <br><br>
     <table class="table table-striped">
         <tr>
@@ -17,7 +17,11 @@
         @foreach($services as $service)
             <tr>
                 <th> <font face="Arial">{{$service->id}}</font> </th>
-                <th> <font face="Arial"></font>{{$service->user_id}}</th>
+                <th> <font face="Arial"></font>
+{{--                    @foreach($services as $service)--}}
+                        <small>{{ $service->user->name }}</small>
+{{--                    @endforeach--}}
+                </th>
                 <th> <font face="Arial">{{$service->name}}</font> </th>
                 <th> <font face="Arial">{{ $service->description }}</font> </th>
                 <th> <font face="Arial">
@@ -27,10 +31,12 @@
                             Inactive
                         @endif</font> </th>
 
-                    <th> <font face="Arial">
+                    <th><font face="Arial"></font>
                         <a href="{{ url('services/edit/' . $service->id) }}" class="btn btn-primary">Edit</a>
-                            @csrf
-                        <a href="{{ url('services/delete/' . $service->id) }}" class="btn btn-danger">Delete</a></font>
+                           <form action="{{ url('services/delete/' . $service->id) }}" method="POST">
+                               @csrf
+                                   <input value="Delete" type="submit" name="Delete" class="btn btn-danger">
+                        </form>
                     </th>
             </tr>
         @endforeach

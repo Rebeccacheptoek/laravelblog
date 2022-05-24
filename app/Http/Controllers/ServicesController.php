@@ -27,6 +27,11 @@ class ServicesController extends Controller
         return redirect()->back();
     }
 
+    public function addService(){
+        return view('admin.add');
+        //return redirect('/services')->with('service', 'Service Added');
+    }
+
     public function manageServices(){
         $services=Service::all();
 
@@ -63,6 +68,6 @@ class ServicesController extends Controller
     public function destroy($id){
         $service = Service::find($id);
         $service->delete();
-        return redirect('services/manage')->with('success', 'Service removed');
+        return redirect('/services')->with('success', 'Service removed');
     }
 }

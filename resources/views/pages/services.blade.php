@@ -18,8 +18,9 @@
         <label>Description</label>
         <textarea name="description" rows="5" cols="100" placeholder="Description" class="form-control"></textarea><br>
         <label>Status</label>
-        <input type="number" name="status" class="form-control" value="1"><br>
+        <input type="number" name="status" class="form-control" value=""><br>
         <button type="submit" >Submit</button>
-    </form><br>
+    </form>
+    <br>
     <a href="{{url('services/manage')}}" >Manage Services</a>
 @endsection

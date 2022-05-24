@@ -12,4 +12,8 @@ class Service extends Model
     protected $fillable = ['name','user_id', 'description','status'];
     public $primaryKey = 'id';
     public $timestamps = true;
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }
