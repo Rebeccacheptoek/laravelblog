@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+//use DB;
 
 class ServicesController extends Controller
 {
@@ -39,6 +40,16 @@ class ServicesController extends Controller
             'title' => 'Services',
             'services' => $services
         ];
+//
+//        $active = DB::table('services')
+//            ->selectRaw('
+//                            name,
+//                            if((status = 1), "Yes", "No") as active,
+//                            if((status = 0), "Yes", "No") as inactive,
+//                            if((status = 2), "Yes", "No") as undefined
+//                     ')
+//            ->get();
+
         return view('admin.services')->with($data);
     }
     public function show($id){
@@ -68,6 +79,6 @@ class ServicesController extends Controller
     public function destroy($id){
         $service = Service::find($id);
         $service->delete();
-        return redirect('/services')->with('success', 'Service removed');
+        return redirect('services/manage')->with('success', 'Service removed');
     }
 }

@@ -10,17 +10,5 @@
                 <li class="list-group-item">No services offered</li>
             @endforelse
         </ul>
-
-    <form action="{{url('services/store/')}}" method="POST">
-        @csrf
-        <label>Name</label>
-        <input type="text" name="name" class="form-control"><br>
-        <label>Description</label>
-        <textarea name="description" rows="5" cols="100" placeholder="Description" class="form-control"></textarea><br>
-        <label>Status</label>
-        <input type="number" name="status" class="form-control" value=""><br>
-        <button type="submit" >Submit</button>
-    </form>
-    <br>
     <a href="{{url('services/manage')}}" >Manage Services</a>
 @endsection

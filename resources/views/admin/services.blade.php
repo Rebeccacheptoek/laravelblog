@@ -18,25 +18,24 @@
             <tr>
                 <th> <font face="Arial">{{$service->id}}</font> </th>
                 <th> <font face="Arial"></font>
-{{--                    @foreach($services as $service)--}}
                         <small>{{ $service->user->name }}</small>
-{{--                    @endforeach--}}
                 </th>
                 <th> <font face="Arial">{{$service->name}}</font> </th>
                 <th> <font face="Arial">{{ $service->description }}</font> </th>
-                <th> <font face="Arial">
-                        @if($service->status === 1)
+                <th> <font face="Arial"></font>
+                        @if($service->status == 1)
                             Active
                         @else
                             Inactive
-                        @endif</font> </th>
-
-                    <th><font face="Arial"></font>
+                        @endif
+                </th>
+                    <th><font face="Arial"></font>@auth
                         <a href="{{ url('services/edit/' . $service->id) }}" class="btn btn-primary">Edit</a>
                            <form action="{{ url('services/delete/' . $service->id) }}" method="POST">
                                @csrf
                                    <input value="Delete" type="submit" name="Delete" class="btn btn-danger">
                         </form>
+                        @endauth
                     </th>
             </tr>
         @endforeach
