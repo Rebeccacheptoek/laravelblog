@@ -17,17 +17,9 @@
         <input type="text" name="name" class="form-control"><br>
         <label>Description</label>
         <textarea name="description" rows="5" cols="100" placeholder="Description" class="form-control"></textarea><br>
+        <label>Status</label>
+        <input type="number" name="status" class="form-control" value="1"><br>
         <button type="submit" >Submit</button>
     </form><br>
     <a href="{{url('services/manage')}}" >Manage Services</a>
-    <hr>
-    @auth()
-    <a href="{{ url('services/store/'.$service->id) }}" class="btn btn-primary ">Edit</a>
-    <form action="{{ url('services/delete/'.$service->id) }}" method="POST" class="pull-right">
-        @csrf
-        <div>
-            <input value="Delete" type="submit" name="Delete" class="btn btn-danger">
-        </div>
-    </form>
-    @endauth
 @endsection
