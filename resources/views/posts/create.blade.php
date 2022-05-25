@@ -3,7 +3,7 @@
 @section('content')
     <h1 style="font-size: 40px">Create Post</h1>
     <div class="mt-2">
-        <form action="{{ url('/your-url') }}" method="POST">
+        <form action="{{ url('/your-url') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="w-100">
                 <label>Title</label>
@@ -14,6 +14,9 @@
                 <textarea type="text" name="body" id="summary-ckeditor" value="" placeholder="Type here" class="form-control"></textarea>
             </div>
             <br>
+            <div class="form-group">
+                <input type="file" required name="cover_image">
+            </div>
             <div>
                 <input type="submit" name="Submit" class="btn btn-primary">
             </div>
